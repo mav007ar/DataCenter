@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case "$1" in
+suspend | hibernate)
+# executed on suspend
+;;
+resume | thaw) 
+# executed on resume
+/usr/sbin/rfkill block all
+/usr/sbin/rfkill unblock all
+/sbin/iwlist wlan0 scan
+;;
+*)
+;;
+esac
